@@ -8,7 +8,6 @@ import Suggested from '../components/Suggested'
 import SEO from '../components/SEO'
 import Comment from '../components/Comment'
 import Blurb from '../components/Blurb'
-
 import config from '../utils/config'
 import { slugify } from '../utils/helpers'
 
@@ -47,12 +46,6 @@ export default function PostTemplate({ data, pageContext }) {
           <header className="article-header">
             <div className="container">
               <div className="thumb">
-                {thumbnail && (
-                  <Img
-                    fixed={thumbnail.childImageSharp.fixed}
-                    className="post-thumbnail"
-                  />
-                )}
                 <div>
                   <h1>{title}</h1>
                   <div className="post-meta">
@@ -75,6 +68,12 @@ export default function PostTemplate({ data, pageContext }) {
                     )}
                   </div>
                 </div>
+                {thumbnail && (
+                  <Img
+                    fixed={thumbnail.childImageSharp.fixed}
+                    className="post-thumbnail"
+                  />
+                )}
               </div>
             </div>
             {description && <p className="description">{description}</p>}
@@ -88,7 +87,7 @@ export default function PostTemplate({ data, pageContext }) {
       <Blurb title="About the author">
         <p>
           Hey, I'm <Link to="/me">Tania</Link>, a software engineer, writer, and
-          open-source creator. I publish guides and tutorials about modern
+          open-sourceror. I publish articles and tutorials about modern
           JavaScript, design, and programming.
         </p>
         <p>
@@ -98,7 +97,7 @@ export default function PostTemplate({ data, pageContext }) {
             target="_blank"
             rel="noreferrer"
           >
-            Join newsletter
+            Get the newsletter
           </a>
           <a
             className="button"

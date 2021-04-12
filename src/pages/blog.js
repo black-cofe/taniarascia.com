@@ -5,7 +5,6 @@ import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import Search from '../components/Search'
 import SEO from '../components/SEO'
-
 import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
 
@@ -15,13 +14,14 @@ export default function BlogIndex({ data, ...props }) {
 
   return (
     <Layout>
-      <Helmet title={`Blog | ${config.siteTitle}`} />
+      <Helmet title={`Articles | ${config.siteTitle}`} />
       <SEO customDescription="Articles, tutorials, snippets, musings, and everything else." />
       <header>
         <div className="container">
-          <h1>Articles</h1>
+          <h1>Articles.</h1>
           <p className="subtitle">
-            Posts, tutorials, snippets, musings, and everything else.
+            Posts, tutorials, snippets, musings, notes, and everything else. The
+            archive of everything I've written.
           </p>
         </div>
       </header>

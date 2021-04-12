@@ -1,4 +1,3 @@
-import sm from '../../content/thumbnails/sm.png'
 import egghead from '../../content/thumbnails/egghead.png'
 import townhall from '../../content/thumbnails/townhall.png'
 import techy from '../../content/thumbnails/techy.png'
@@ -10,14 +9,6 @@ export default [
     path: 'https://share.transistor.fm/s/51b9c2f2',
     description: 'Interview with Ellen Twomey on the You are techY Podcast',
     staticThumbnail: techy,
-  },
-  {
-    id: 'sitemonster',
-    title: 'The Secret Is Just Do a Little Bit Over a Long Time',
-    path:
-      'https://sitesmonster.com/interviews/tania-rascia-the-secret-is-just-do-a-little-bit-over-a-long-time',
-    description: 'Interview with James King on SitesMonster.com',
-    staticThumbnail: sm,
   },
   {
     id: 'egghead',

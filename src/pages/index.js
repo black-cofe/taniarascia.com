@@ -8,10 +8,8 @@ import Guides from '../components/Guides'
 import Projects from '../components/Projects'
 import SEO from '../components/SEO'
 import Blurb from '../components/Blurb'
-
 import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
-
 import projects from '../data/projects'
 import interviews from '../data/interviews'
 import speaking from '../data/speaking'
@@ -26,7 +24,7 @@ export default function BlogIndex({ data }) {
 
   const Section = ({ title, children, button, ...props }) => (
     <section {...props}>
-      <h2>
+      <h2 className="section-title">
         {title}
         {button && (
           <Link className="section-button" to="/blog">
@@ -48,54 +46,39 @@ export default function BlogIndex({ data }) {
           &mdash; a compendium of the things I've learned and created over the
           years.
         </p>
-        <p className="stack-mobile">
-          <Link className="button" to="/me">
-            About me
-          </Link>
-          <a
-            className="button"
-            href="https://taniarascia.substack.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Join newsletter
-          </a>
-          <a
-            className="button"
-            href="https://github.com/taniarascia"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-        </p>
       </Blurb>
       <div className="container index">
-        <Section title="Latest Articles" button>
+        <Section title="Latest Articles." button>
           <Posts data={simplifiedLatest} />
         </Section>
-        <Section title="Popular Articles" button>
+        <Section title="Popular Articles." button>
           <Posts data={simplifiedPopular} />
         </Section>
-        <Section title="Projects">
+        <Section title="Projects.">
           <Projects data={projects} />
         </Section>
-        <Section title="Interviews">
+        <Section title="Interviews.">
           <Guides data={interviews} frontPage />
         </Section>
-        <Section title="Speaking">
+        <Section title="Speaking.">
           <Guides data={speaking} frontPage />
         </Section>
-        <Section title="Newsletter">
-          <p>I send out an email when I create something new.</p>
-          <a
-            href="https://taniarascia.substack.com/subscribe"
-            target="_blank"
-            rel="noreferrer"
-            className="button large"
-          >
-            <span className="emoji">💌</span> Get the Newsletter
-          </a>
+        <Section title="Newsletter.">
+          <div className="flex">
+            <p className="paragraph">
+              I send out an email when I create something new. I'm never going
+              to spam you, and you can unsubscribe any time.
+            </p>
+            <a
+              href="https://taniarascia.substack.com/subscribe"
+              target="_blank"
+              rel="noreferrer"
+              className="button"
+              style={{ textAlign: 'center', marginLeft: '.5rem' }}
+            >
+              Get the newsletter
+            </a>
+          </div>
         </Section>
       </div>
     </Layout>

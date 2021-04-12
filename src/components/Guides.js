@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 
 import { slugify } from '../utils/helpers'
 
-export default function Guides({ data, frontPage }) {
+export default function Guides({ data, frontPage, includeTime }) {
   const LinkType = ({ guide, children }) =>
     guide.slug ? (
       <Link to={guide.slug} className="image-link">
@@ -23,6 +23,26 @@ export default function Guides({ data, frontPage }) {
           <div className="guide" key={guide.id}>
             <div>
               <LinkType guide={guide}>
+                <h2>{guide.title}</h2>
+                {includeTime && <time>{guide.date}</time>}
+                {guide.tags && (
+                  <div className="tags" style={{ marginBottom: '1rem' }}>
+                    {guide.tags.map((tag) => (
+                      <Link
+                        key={tag}
+                        to={`/tags/${slugify(tag)}`}
+                        className={`tag-${tag}`}
+                      >
+                        {tag}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </LinkType>
+              {guide.description && <p>{guide.description}</p>}
+            </div>
+            <div>
+              <LinkType guide={guide}>
                 {guide.staticThumbnail ? (
                   <img
                     src={guide.staticThumbnail}
@@ -34,27 +54,6 @@ export default function Guides({ data, frontPage }) {
                   <Img fixed={guide.thumbnail} />
                 )}
               </LinkType>
-            </div>
-            <div>
-              <LinkType guide={guide}>
-                <h2>{guide.title}</h2>
-              </LinkType>
-              {guide.description && (
-                <p className="description">{guide.description}</p>
-              )}
-              {guide.tags && (
-                <div className="tags" style={{ marginTop: '1rem' }}>
-                  {guide.tags.map((tag) => (
-                    <Link
-                      key={tag}
-                      to={`/tags/${slugify(tag)}`}
-                      className={`tag-${tag}`}
-                    >
-                      {tag}
-                    </Link>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
         )

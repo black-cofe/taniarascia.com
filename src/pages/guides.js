@@ -1,16 +1,14 @@
 import React, { useMemo } from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import Guides from '../components/Guides'
 import SEO from '../components/SEO'
-
 import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
 
-export default function BlogIndex({ data }) {
+export default function GuidesIndex({ data }) {
   const posts = data.allMarkdownRemark.edges
   const simplifiedPosts = useMemo(
     () => getSimplifiedPosts(posts, { thumbnails: true }),
@@ -23,25 +21,16 @@ export default function BlogIndex({ data }) {
       <SEO />
       <header>
         <div className="container">
-          <h1>Guides</h1>
+          <h1>Guides.</h1>
           <p className="subtitle">
-            The missing instruction manuals of the web.
+            The missing instruction manuals of the web. Long form articles,
+            guides, tutorials, and references about programming and design.
           </p>
         </div>
       </header>
       <section>
-        <div className="container guide-thumbnails">
-          {simplifiedPosts.map((post) => (
-            <Link to={post.slug} className="image-link" key={post.slug}>
-              <Img fixed={post.thumbnail} />
-              <span>{post.topic}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-      <section>
         <div className="container">
-          <Guides data={simplifiedPosts} />
+          <Guides data={simplifiedPosts} includeTime />
         </div>
       </section>
     </Layout>
@@ -65,6 +54,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             description
             tags
+            categories
             topic
             thumbnail {
               childImageSharp {
